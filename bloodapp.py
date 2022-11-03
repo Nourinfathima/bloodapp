@@ -16,20 +16,25 @@ while True:
 
     choice = int(input('Enter an option: '))
     if(choice == 1):
-        print('employee enter selected')
+        print(' enter selected')
         
         name = input('enter the name: ')
         bloodgroup = input('enter the grp: ')
         unit = input('enter the unit: ')
         phno= input('enter the  phnno: ')
         place = input('place: ')
-        sql = 'INSERT INTO `donater`(`Name`, `bloodgroup`, `unit`, `phno`, `place`) VALUES (%s,%s,%s,%s,%s)'
+        sql = 'INSERT INTO `donors`(`Name`, `bloodgroup`, `unit`, `phno`, `place`) VALUES (%s,%s,%s,%s,%s)'
         data = (name, bloodgroup,unit,phno,place)
         mycursor.execute(sql , data)
         mydb.commit()
         
     elif(choice == 2):
-        print('view all book selected')
+        print('view blood')
+        sql = 'SELECT * FROM `donors`'
+        mycursor.execute(sql)
+        result = mycursor.fetchall()
+        for i in result:
+            print(i)
     elif(choice==3):
         print('search a book selected')
     elif(choice==4):
